@@ -88,7 +88,7 @@ public class QueryGenerator {
             }
 
             RelToSqlConverter converter = new RelToSqlConverter(sqlDialect);
-            String result = converter.visitRoot(bodyNode).asQueryOrValues().toSqlString(PostgresqlSqlDialect.DatabaseProduct.POSTGRESQL.getDialect()).getSql();
+            String result = converter.visitRoot(bodyNode).asQueryOrValues().toSqlString(sqlDialect).getSql();
 
             System.out.println();
             System.out.println("===== Generated SQL query =====");
