@@ -71,10 +71,10 @@ public class QueryGenerator {
             RelBuilder rb = RelBuilder.create(config);
             rb = rb
                     .scan(schema, "my_user")
+                    .project(rb.field("user_id"), rb.field("name"), rb.field("group_id"))
                     .filter(
                             rb.call(SqlStdOperatorTable.LIKE, rb.field("name"), new RexDynamicParam(rb.field("name").getType(), 0))
-                    )
-                    .project(rb.field("user_id"), rb.field("name"), rb.field("group_id"));
+                    );
 
             RelNode bodyNode = rb.build();
 
